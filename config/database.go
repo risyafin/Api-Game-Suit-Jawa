@@ -12,7 +12,7 @@ const (
 	dbUsername = "DB_USERNAME"
 	dbPassword = "DB_PASSWORD"
 	dbHost     = "DB_HOST"
-	dbName     = "DB_HOST"
+	dbName     = "DB_NAME"
 	dbPort     = "DB_PORT"
 )
 
