@@ -28,6 +28,7 @@ func main() {
 	userHandler := handler.NewUserHandler(userUsecase)
 
 	r.HandleFunc("/users/{id_game}", userHandler.GetUser).Methods("GET")
+	r.HandleFunc("/users",userHandler.GetUsers).Methods("GET")
 	http.ListenAndServe(":8080", r)
 
 }

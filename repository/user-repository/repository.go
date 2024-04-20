@@ -23,9 +23,12 @@ func (r repository) GetUser(id string) (*entity.User, error) {
 
 		db = r.DB
 	)
-
 	err := db.Where("id_game =?", id).First(&user).Error
-
 	return user, err
+}
 
+func (r repository) GetUsers() ([]entity.User, error) {
+	var user []entity.User
+	err := r.DB.Find(&user).Error
+	return user, err
 }
