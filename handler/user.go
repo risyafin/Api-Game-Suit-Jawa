@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"game_suit/core/module"
 	"net/http"
-	"strconv"
 
 	"github.com/gorilla/mux"
 )
@@ -21,12 +20,8 @@ func NewUserHandler(userUsecase module.UserUsecase) *userHandler {
 func (e *userHandler) GetUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	vars := mux.Vars(r)
-	id := vars["id"]
-	idInt, err := strconv.Atoi(id)
-	if err != nil {
-		fmt.Fprintf(w, err.Error(), http.StatusInternalServerError)
-	}
-	user, err := e.userUsecase.GetUser(idInt)
+	id := vars["id_game"]
+	user, err := e.userUsecase.GetUser(id)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -37,6 +32,7 @@ func (e *userHandler) GetUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	w.WriteHeader(http.StatusOK)
+	fmt.Println("hasil:", result)
 	w.Write(result)
 
 }

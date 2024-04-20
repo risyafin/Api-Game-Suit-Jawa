@@ -6,7 +6,7 @@ import (
 )
 
 type UserUsecase interface {
-	GetUser(id int) (*entity.User, error)
+	GetUser(id string) (*entity.User, error)
 }
 
 type userUsecase struct {
@@ -17,6 +17,6 @@ func NewUserUsecase(userRepository repository.UserRepository) UserUsecase {
 	return &userUsecase{userRepository: userRepository}
 }
 
-func (e *userUsecase) GetUser(id int) (*entity.User, error) {
+func (e *userUsecase) GetUser(id string) (*entity.User, error) {
 	return e.userRepository.GetUser(id)
 }

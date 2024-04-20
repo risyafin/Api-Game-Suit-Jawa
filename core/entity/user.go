@@ -1,9 +1,8 @@
 package entity
 
-
 type User struct {
-	IdGame int `json:"idGame"`
-	Username string `json:"username"`
-	Password string `json:"password"`
-	Point string `json:"point"`
+	Id_Game  int    `gorm:"not null, primaryKey, autoIncrement" json:"id_game"`
+	Username string `gorm:"not null" json:"username"`
+	Password string `gorm:"not null" json:"password"`
+	Point    string `gorm:"not null" json:"point"`
 }
